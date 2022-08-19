@@ -1,0 +1,6 @@
+<%# adding condition so it it displayed only when needed. Without that, all pages would have extra padding saving space for the alert/ notice %>
+<% if notice %>
+  <p class="notice"><%= notice %></p>
+<% elsif alert %>
+  <p class="alert"><%= alert %></p>
+<% end %>

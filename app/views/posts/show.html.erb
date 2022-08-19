@@ -1,5 +1,6 @@
 <p style="color: green"><%= notice %></p>
 
+<div class="container">
 <%= render @post %>
 
 <div>
@@ -7,4 +8,5 @@
   <%= link_to "Back to posts", posts_path %>
 
   <%= button_to "Destroy this post", @post, method: :delete %>
+</div>
 </div>

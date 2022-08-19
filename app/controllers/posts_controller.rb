@@ -8,6 +8,11 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
+    # views = @post.views +1
+    # @post.views = views
+    # @post.save
+    # cleaner option below:
+    @post.update(views: @post.views + 1)
   end
 
   # GET /posts/new
