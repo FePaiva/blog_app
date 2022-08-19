@@ -1,0 +1,25 @@
+<%# adding if statement to show the dropdown menu only if user is loged in. %>
+<%# Devise gives a current_user account variable . It will evaluate to true if user logged in, and will display the first block of the if statement below. %>
+<% if current_user%>
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    User
+  </a>
+  <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
+    <li><%= link_to "New Post", new_post_path, class: "dropdown-item"%></li>
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><hr class="dropdown-divider"></li>
+<%# have to use button to call the DELETE method. Can only use link to with GET. %>
+    <li><%= button_to "Sign out",  destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
+  </ul>
+</li>
+<%# If not logged in, it is false, will display what is under the else block below. %>
+<% else %>
+<li class="nav-item">
+    <%= link_to "Sign Up", new_user_registration_path, class:"nav-link" %>
+</li>
+<li class="nav-item">
+  <%= link_to "Login", new_user_session_path, class: "nav-link"%>
+</li> 
+<% end %>
