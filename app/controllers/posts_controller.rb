@@ -28,6 +28,9 @@ class PostsController < ApplicationController
   # POST /posts or /posts.json
   def create
     @post = Post.new(post_params)
+# the authenticate_user is making sure to grant create post access only if user is signed in.
+# seting the user of the post.
+    @post.user = current_user
 
     respond_to do |format|
       if @post.save
