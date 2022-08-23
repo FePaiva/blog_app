@@ -1,13 +1,11 @@
-
 <div class="container">
 <%= render @post %>
-
   <div>
     <%= link_to "Back to posts", posts_path %>
     
     <% if current_user == @post.user %>
         <div class="button-group">
-          <%= button_to "Edit post", edit_post_path(@post) %>
+          <%= link_to "Edit post", edit_post_path(@post) %>
           <%= button_to "Delete Post", @post, class:"btn btn-danger", method: :delete %>
         </div>
 <% end %>
@@ -17,10 +15,19 @@
 </div>
 
 <div class="container">
-  <%= render 'comments/form', post: @post %>
+<%# passing @post.comments.build to give us the comment.%>
+  <%= render 'comments/form', 
+      post: @post, 
+      comment: @post.comments.build,
+       submit_label: "Reply" 
+  %>
+  
 <%# to render the comment. The @comment is defined in the post controller.%>
   <% @comments.each do |comment| %>
-   <%= render 'comments/comment', post: @post, comment: comment %>
+   <%= render 'comments/comment', 
+       post: @post, 
+       comment: comment
+    %>
   <% end %>
 </div>
 
